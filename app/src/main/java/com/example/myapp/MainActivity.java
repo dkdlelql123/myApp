@@ -41,7 +41,19 @@ public class MainActivity extends AppCompatActivity {
         toastMsg("결과 :"+rs);
     }
 
+    public void btnClearClicked(View view) {
+        EditText editTextNum1 = findViewById(R.id.activity_main__editTextNum1);
+        EditText editTextNum2 = findViewById(R.id.activity_main__editTextNum2);
+
+        editTextNum1.setText("");
+        editTextNum2.setText("");
+        
+        toastMsg("지우기완료");
+         
+    }
+    
     void toastMsg(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
+
 }
