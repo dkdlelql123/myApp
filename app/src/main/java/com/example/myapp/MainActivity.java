@@ -10,78 +10,70 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText editTextNum1 ;
+    EditText editTextNum2 ;
+    TextView textViewRs ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        editTextNum1 = findViewById(R.id.activity_main__editTextNum1);
+        editTextNum2 = findViewById(R.id.activity_main__editTextNum2);
+        textViewRs = findViewById(R.id.activity_main__textViewRs);
+    }
+
+    public boolean EditTextChecked(){
+        editTextNum1.setText( editTextNum1.getText().toString().trim() );
+        editTextNum2.setText( editTextNum2.getText().toString().trim() );
+
+        if(editTextNum1.getText().toString().length()== 0){
+            toastMsg("숫자1을 작성해주세요.");
+            editTextNum1.requestFocus();
+            return false;
+        }
+
+        if(editTextNum2.getText().toString().length()== 0){
+            toastMsg("숫자2을 작성해주세요.");
+            editTextNum2.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 
     public void btnAddClicked(View view) {
-        EditText num1 = findViewById(R.id.activity_main__editTextNum1);
-        EditText num2 = findViewById(R.id.activity_main__editTextNum2);
-        TextView textViewRs = findViewById(R.id.activity_main__textViewRs);
+        if(EditTextChecked() == false) return;
 
-        num1.setText( num1.getText().toString().trim() );
-        num2.setText( num2.getText().toString().trim() );
-
-        if(num1.getText().toString().length()== 0){
-            toastMsg("숫자1을 작성해주세요.");
-            num1.requestFocus();
-            return;
-        }
-
-        if(num2.getText().toString().length()== 0){
-            toastMsg("숫자2을 작성해주세요.");
-            num2.requestFocus();
-            return;
-        }
-
-        int number1 = Integer.parseInt( num1.getText().toString() );
-        int number2 = Integer.parseInt( num2.getText().toString() );
+        int number1 = Integer.parseInt( editTextNum1.getText().toString() );
+        int number2 = Integer.parseInt( editTextNum2.getText().toString() );
         int rs = number1 + number2;
 
         toastMsg("결과 :"+rs);
         textViewRs.setText("결과 :"+rs);
     }
 
+    public void btnMinusClicked(View view) {
+
+        if(EditTextChecked() == false) return;
+
+        int number1 = Integer.parseInt( editTextNum1.getText().toString() );
+        int number2 = Integer.parseInt( editTextNum2.getText().toString() );
+        int rs = number1 - number2;
+
+        toastMsg("결과 :"+rs);
+        textViewRs.setText("결과 :"+rs);
+    }
+
     public void btnClearClicked(View view) {
-        EditText editTextNum1 = findViewById(R.id.activity_main__editTextNum1);
-        EditText editTextNum2 = findViewById(R.id.activity_main__editTextNum2);
-        TextView textViewRs = findViewById(R.id.activity_main__textViewRs);
 
         editTextNum1.setText("");
         editTextNum2.setText("");
         
         toastMsg("지우기완료");
-        textViewRs.setText("");
+        textViewRs.setText("초기화");
          
-    }
-
-    public void btnMinusClicked(View view) { EditText num1 = findViewById(R.id.activity_main__editTextNum1);
-        EditText num2 = findViewById(R.id.activity_main__editTextNum2);
-        TextView textViewRs = findViewById(R.id.activity_main__textViewRs);
-
-        num1.setText( num1.getText().toString().trim() );
-        num2.setText( num2.getText().toString().trim() );
-
-        if(num1.getText().toString().length()== 0){
-            toastMsg("숫자1을 작성해주세요.");
-            num1.requestFocus();
-            return;
-        }
-
-        if(num2.getText().toString().length()== 0){
-            toastMsg("숫자2을 작성해주세요.");
-            num2.requestFocus();
-            return;
-        }
-
-        int number1 = Integer.parseInt( num1.getText().toString() );
-        int number2 = Integer.parseInt( num2.getText().toString() );
-        int rs = number1 - number2;
-
-        toastMsg("결과 :"+rs);
-        textViewRs.setText("결과 :"+rs);
     }
     
     void toastMsg(String msg){
