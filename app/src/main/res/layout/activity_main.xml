@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="12dp"
+    >
 
     <EditText
         android:id="@+id/activity_main__editTextNum1"
@@ -21,19 +23,39 @@
         android:hint="숫자2을 입력해주세요."
         android:inputType="numberDecimal"/>
 
-    <Button
-        android:onClick="btnAddClicked"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="더하기"
-        />
+        android:orientation="horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
 
-    <Button
-        android:onClick="btnClearClicked"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="지우기"
-        />
+        <Button
+            android:onClick="btnAddClicked"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="더하기"
+            />
+
+        <Button
+            android:onClick="btnMinusClicked"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="빼기"
+            />
+
+        <Button
+            android:onClick="btnClearClicked"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="지우기"
+            />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/activity_main__textViewRs"
