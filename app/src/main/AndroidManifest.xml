@@ -11,7 +11,10 @@
         android:theme="@style/Theme.MyApp">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            >
+            <!-- windowSoftInputMode = adjustResize : 키보드가 나올 때, 바닥의 요소들이 가려지지 않게 함.    -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
